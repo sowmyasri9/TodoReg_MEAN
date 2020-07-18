@@ -1,7 +1,7 @@
-<div class="container">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row justify-content-center">
       <div class="col-md-5">
-        <h1 class="page-title">User Registration</h1>
+        <h1 class="title">User Registration</h1>
         <form #registerForm="ngForm">
           <div class="form-group">
             <div *ngIf="errors.length > 0" class="alert alert-danger">
@@ -9,7 +9,7 @@
                 <li>{{ error }}</li>
             </ul>
             </div>
-            <label for="username">Username</label>
+            <label class="title" for="username">Username</label>
            <input type="text"
                    class="form-control"
                    [(ngModel)] = "formData.username"
@@ -25,7 +25,7 @@
           </div>
 
           <div class="form-group">
-            <label for="email">Email</label>
+            <label class="title" for="email">Email</label>
             <input type="email"
                    class="form-control"
                    [(ngModel)] = "formData.email"
@@ -41,7 +41,7 @@
           </div>
 
           <div class="form-group">
-            <label for="password">Password</label>
+            <label class="title" for="password">Password</label>
             <input type="password"
                    class="form-control"
                    [(ngModel)] = "formData.password"
@@ -57,7 +57,7 @@
           </div>
 
           <div class="form-group">
-            <label for="passwordConfirmation">Confirm Password</label>
+            <label class="title" for="passwordConfirmation">Confirm Password</label>
             <input type="password"
                    class="form-control"
                    [(ngModel)] = "formData.passwordConfirmation"

@@ -1,0 +1,9 @@
+#text{
+    width:300px;
+}
+.todo{
+    background-color: #595959;
+}
+#todo-item{
+    height:100px;
+}

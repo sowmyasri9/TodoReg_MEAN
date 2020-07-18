@@ -1,7 +1,7 @@
-<div class="container">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row justify-content-center">
       <div class="col-md-5">
-        <h1 class="page-title">Login</h1>
+        <h1 class="title">Login</h1>
         <form [formGroup]="loginForm" (ngSubmit) = "login()">
           <div class="form-group">
             <div *ngIf="notify" class="alert alert-success">
@@ -12,7 +12,7 @@
                   {{ error }}
               </p>
             </div>
-            <label for="email">Email</label>
+            <label class="title" for="email">Email</label>
             <input type="email"
                    class="form-control"
                    formControlName="email">
@@ -28,7 +28,7 @@
           </div>
 
           <div class="form-group">
-            <label for="password">Password</label>
+            <label class="title" for="password">Password</label>
             <input type="password"
                    class="form-control"
                    formControlName ="password">
@@ -42,7 +42,7 @@
           <button
           [disabled]="!loginForm.valid"
           type="submit" 
-          class="btn btn-warning"
+          class="btn btn-success"
           >Sign In</button>
         </form>
       </div>
