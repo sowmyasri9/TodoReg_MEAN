@@ -22,7 +22,7 @@ exports.register = function (req, res) {
       const user = new User({
         username, email, password
       })
-
+ 
       user.save(function (err) {
         if (err) {
           return res.status(422).json({

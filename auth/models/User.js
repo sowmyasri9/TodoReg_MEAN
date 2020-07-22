@@ -43,7 +43,7 @@ userSchema.pre('save', function (next) {
         return res.status(422).json({
           'error': 'There is an error while password hash'
         })
-      }
+      } 
       user.password = hash
       next()
     })

@@ -18,6 +18,7 @@ class DecodedToken {
 export class AuthService {
 
   private uriseg = 'http://localhost:5000/api/users';
+  private uritodo='http://localhost:5000/api/todo';
   private decodedToken;
 
   constructor(private http: HttpClient) {
@@ -56,5 +57,17 @@ export class AuthService {
 
   public getUsername(): string {
     return this.decodedToken.username;
+  }
+  public saveTodo(todoData:any):Observable<any>{
+    console.log(todoData)
+    const URI = this.uritodo + '/savetodo';
+    return this.http.post(URI,todoData);
+  }
+  public getTodo(){
+    const URI=this.uritodo+'/gettodo';
+    return this.http.get(URI);
+  }
+  public deleteTask(id){
+    return this.http.get(`${this.uritodo}/delete/${id}`);
   }
 }

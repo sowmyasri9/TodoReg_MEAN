@@ -11,5 +11,5 @@ router.post('/login', user.login)
 router.get('/profile', authMiddleware, function (req, res) {
   res.json({ 'access': true })
 })
-
+ 
 module.exports = router

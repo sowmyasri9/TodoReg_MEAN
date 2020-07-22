@@ -1,4 +1,6 @@
+import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
+import Todo from '../Todo';
 
 @Component({
   selector: 'app-profile',
@@ -6,34 +8,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor() { }
+  formData: any = {};
+  public todos:Todo[]; 
+  errors: any = [];
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
-  }
-/* An empty array that is responsible
-       to add a division */
-    public items = []; 
-  
-    /* A two-way binding performed which 
-       pushes text on division */
-    public newTask; 
-  
-  
-    /* When input is empty, it will 
-       not create a new division */
-    public addToList() { 
-        if (this.newTask == '') { 
+    this.auth.getTodo().subscribe((data: Todo[]) => {
+      this.todos = data;
+      console.log(this.todos)
+  });
+}
+
+public addToList() { 
+ 
+      this.errors = [];
+        if (this.formData == '') { 
         } 
-        else { 
-            this.items.push(this.newTask); 
-            this.newTask = ''; 
-        } 
+        else {  
+
+            this.auth.saveTodo(this.formData)
+            .subscribe((data) => {
+              console.log("saved to the database")
+              window.location.reload();
+             },
+              (errorResponse) => {
+                this.errors.push(errorResponse.error.error);
+              });
+            }
     } 
-  
-    /* This function takes to input the 
-       task, that has to be deleted*/
-    public deleteTask(index) { 
-        this.items.splice(index, 1); 
-    } 
+    deleteTask(id){
+      this.auth.deleteTask(id).subscribe(res=>{
+        this.todos.splice(id,1);
+        window.location.reload();
+      });
+    }
 }

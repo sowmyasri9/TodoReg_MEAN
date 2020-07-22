@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const config = require('./DB');
 const userRoute = require('./routes/UserRoute');
+const todoRoute=require('./routes/TodoRoute');
 
 const PORT = process.env.PORT || 5000;
 
@@ -30,6 +31,7 @@ let corsOptions = {
 
 app.use(cors(corsOptions))
 app.use('/api/users', userRoute);
+app.use('/api/todo',todoRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);

@@ -7,3 +7,9 @@
 #todo-item{
     height:100px;
 }
+button{
+    float: right;
+}
+.form-control{
+    margin-top: 15px;
+}
